@@ -1,20 +1,90 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<app-header (featureSelected)="onNavigate($event)"></app-header>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list> -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  </div>
 
+
+<!-- sect 7 <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-primary" (click)="onlyOdd= !onlyOdd">
+        Only show odd numbers
+      </button>
+      <br>
+      <br>
+      <ul class="list-group">
+        <div *ngIf="onlyOdd">
+          <li class="list-group-item" 
+            *ngFor="let odd of odds" 
+            [ngClass]="{ odd: odd % 2 !== 0}"
+            [ngStyle]="{ backgroundColor: odd %2 !== 0 ? 'yellow': 'red'}">
+            {{odd}}
+          </li>
+        </div>
+        <div *ngIf="!onlyOdd">
+            <li class="list-group-item" 
+              *ngFor="let even of evens"  
+              [ngClass]="{ odd: even % 2 !== 0}"
+              [ngStyle]="{ backgroundColor: even %2 !== 0 ? 'yellow': 'red'}">
+              {{even}}
+            </li>
+          </div>
+          <ng-template [ngIf]="!onlyOdd">
+            <li class="list-group-item" 
+            *ngFor="let even of evens"  
+            [ngClass]="{ odd: even % 2 !== 0}"
+            [ngStyle]="{ backgroundColor: even %2 !== 0 ? 'yellow': 'red'}">
+            {{even}}
+          </li>
+          </ng-template>
+          <div *appUnless="onlyOdd">
+            <li class="list-group-item" 
+            *ngFor="let even of evens"  
+            [ngClass]="{ odd: even % 2 !== 0}"
+            [ngStyle]="{ backgroundColor: even %2 !== 0 ? 'yellow': 'red'}">
+            {{even}}
+          </li>
+        </div>
+      </ul>
+      <P appBasicHighlight>Style me with basic directive!</P>
+      <P [appBetterHighlight]="'blue'" defaultColor="yellow" >Style me with better directive!</P>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">value is 5</p>
+        <p *ngSwitchCase="10">value is 10</p>
+        <p *ngSwitchCase="15">value is 15</p>
+        <p *ngSwitchCase="25">value is 25</p>
+      
+      </div>
+      
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<!--<div class="container">
+  <app-cookpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)"></app-cookpit>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-primary" (click)="onChangeFirst()">Change first element </button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy first element </button>
+
+      <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement" [name]="serverElement.name">
+
+        <p #contentParagraph class="card-title">
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+
+      </app-server-element>
+    </div>
+  </div>
+</div>-->

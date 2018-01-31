@@ -1,0 +1,9 @@
+<a style="cursor:pointer" class="list-group-item clearfix" [routerLink]="[index]" routerLinkActive="active">
+  <div class="float-left">
+    <h4 class="ist-group-item-heading"> {{recipe.name}} </h4>
+    <p class="ist-group-item-text"> {{recipe.description}} </p>
+  </div>
+  <div class="float-right">
+    <img [src]="recipe.imagePath" alt="xd" class="img-responsive" style="max-height:50px;">
+  </div>
+</a>

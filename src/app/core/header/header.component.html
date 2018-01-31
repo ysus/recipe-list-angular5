@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" routerLink="">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/recipes">Recipes</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/shopping-list">Shopping List</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+          <li class="nav-item"><a class="nav-link" routerLink="/signup">Register</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/signin">Login</a></li>  
+      </ng-template>
+      <li><a class="nav-item dropdown" class="" style="cursor:pointer" (click)="onLogout()"  *ngIf="authService.isAuthenticated()"> Logout </a> </li>
+      <li class="nav-item dropdown" appDropdown  (isShow)="isShow($event)" *ngIf="authService.isAuthenticated()">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage
+        </a>
+        <div class="dropdown-menu" [ngClass]="{ show : show}" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
+          <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+
+<!--<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="" class="navbar-brand">Recipe Book</a>
+    </div>
+    <div class="navbar-default">
+      <ul class="nav navbar-nav">
+        <li><a href="">Recipes</a></li>
+        <li><a href="">Shopping List</a></li>
+      </ul>
+      <ul class="na navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+          <ul>
+            <li><a href="">Save data</a></li>
+            <li><a href=""></a>Fetch Data</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>-->
